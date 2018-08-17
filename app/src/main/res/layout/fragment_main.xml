@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MainFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:weightSum="1"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <ViewFlipper
+                android:id="@+id/idFlipper_mainFrag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                ></ViewFlipper>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:weightSum="1"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/idListQoutes_mainFrag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ListView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:padding="5dp"
+    android:background="@drawable/select_lang_dialog_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/idCross_squadDialog"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="X"
+            android:textStyle="bold"
+            android:padding="2dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:background="@drawable/cross_style"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.4"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+        <TextView
+            android:id="@+id/idQuoteDetailsHeading_quotesDialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="gvhjknds"
+            android:textSize="16dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="center"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="8">
+        <ScrollView android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView
+            android:id="@+id/idQuoteDetails_quotesDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:textSize="18dp"
+            android:text="hgajsgbja gbxcakj sxjk axk aakjs hnkask jnla jnskj asllas"/>
+        </ScrollView>
+    </LinearLayout>
+
+
+</LinearLayout>
+
