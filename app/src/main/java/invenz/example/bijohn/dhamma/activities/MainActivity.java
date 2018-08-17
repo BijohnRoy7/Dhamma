@@ -1,5 +1,6 @@
 package invenz.example.bijohn.dhamma.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.support.design.widget.TabLayout;
@@ -7,7 +8,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -23,6 +28,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import hotchemi.android.rate.AppRate;
 import invenz.example.bijohn.dhamma.R;
 import invenz.example.bijohn.dhamma.adapters.ViewPageCustomAdapter;
 import invenz.example.bijohn.dhamma.fragments.CountdownFragment;
@@ -42,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = findViewById(R.id.idMyAppBar);
+        setSupportActionBar(toolbar);
 
         myTabLayout = findViewById(R.id.idTablayout_mainActivity);
         myViewPager = findViewById(R.id.idViewPager_mainActivity);
@@ -83,7 +92,69 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        /*###                    Rate app codes                                ####*/
+        AppRate.with(this)
+                .setInstallDays(1)
+                .setLaunchTimes(3)
+                .setRemindInterval(2)
+                .monitor();
+        AppRate.showRateDialogIfMeetsConditions(this);
+
     }
+
+
+    /*############### ActionBar ###################*/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.idShare:
+
+
+                try {
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setType("text/plain");
+                    i.putExtra(Intent.EXTRA_SUBJECT, "Movie Go");
+                    String sAux = "\nLet me recommend you this application\n\n";
+                    sAux = sAux + "https://play.google.com/store/apps/details?id=invenz.example.bijohn.dhamma \n\n"; /*###### PLAYSTORE lINK ######*/
+                    i.putExtra(Intent.EXTRA_TEXT, sAux);
+                    startActivity(Intent.createChooser(i, "choose one"));
+
+                } catch(Exception e) {
+                    //e.toString();
+                    Log.d(TAG, "onOptionsItemSelected (MainActivity): "+e);
+                }
+
+                //Toast.makeText(this, "Share app", Toast.LENGTH_SHORT).show();
+
+                break;
+
+            case R.id.idExit:
+                finish();
+                //Toast.makeText(this, "Exit", Toast.LENGTH_SHORT).show();
+                break;
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    /*#########################################*/
+
+
+
 
 
     /*###                     Storing Token into server                  ###*/
@@ -151,12 +222,18 @@ public class MainActivity extends AppCompatActivity {
 
     /*###################### SETTING UP Tabs IN THE Tablayout ########################*/
     private void setUpMyTabs() {
-        TabLayout.Tab tab = myTabLayout.getTabAt(0).setIcon(R.drawable.home_icon).setText("Home");
+        //TabLayout.Tab tab = myTabLayout.getTabAt(0).setIcon(R.drawable.home_icon).setText("Home");
+        TabLayout.Tab tab = myTabLayout.getTabAt(0).setIcon(R.drawable.ic_home_black_24dp);
         int tabIconColor = ContextCompat.getColor(MainActivity.this, R.color.tabChange);
         tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+/*
 
         myTabLayout.getTabAt(1).setIcon(R.drawable.event_icon).setText("Events");
         myTabLayout.getTabAt(2).setIcon(R.drawable.countdown_icon).setText("Countdown");
+*/
+
+        myTabLayout.getTabAt(1).setIcon(R.drawable.ic_event_black_24dp);
+        myTabLayout.getTabAt(2).setIcon(R.drawable.ic_timer_black_24dp);
     }
 
 }
