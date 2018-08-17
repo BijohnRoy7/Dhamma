@@ -42,7 +42,7 @@ public class SplashSactivity extends AppCompatActivity {
         //SharedPreferences for checking if app is used first time
         SharedPreferences preferences = getSharedPreferences("sf", MODE_PRIVATE);
         boolean isFirst = preferences.getBoolean("firstLogin", true);
-        Toast.makeText(this, ""+isFirst, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, ""+isFirst, Toast.LENGTH_SHORT).show();
 
 
         /*###################### Is Internet Connected ? ##########################*/
